@@ -9,6 +9,8 @@ appcompat = "1.7.1"
 material = "1.12.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
+room = "2.6.1" # room version number
+ksp = "2.2.0-2.0.2" # ksp verison number, kotlin number
 # ↓↓↓↓ 請加上 Compose 相關的版本號 ↓↓↓↓
 activityCompose = "1.10.1"
 composeBom = "2024.08.00"  # 這是 Compose 的物料清單版本，會統一管理其他 compose 函式庫版本
@@ -23,6 +25,10 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+# ↓↓↓↓ 新增 Room 相關的函式庫 ↓↓↓↓
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
 # Compose 物料清單 (Bill of Materials)
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
@@ -43,7 +49,8 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+# ↓↓↓↓ 新增 KSP 外掛，這是 Room 編譯器需要的工具 ↓↓↓↓
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 #compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 

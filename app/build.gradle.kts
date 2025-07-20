@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     // ↓↓↓↓ 這就是那行關鍵的新外掛 ↓↓↓↓
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.ksp) // <<< 加上這一行
 }
 
 android {
@@ -69,7 +70,20 @@ dependencies {
 
     // 如果你沒有要混用 XML，下面這幾行可以考慮移除
     // implementation(libs.androidx.appcompat)
-     implementation(libs.material)
-    implementation("com.google.android.material:material:1.12.0") // 請確認版本號
+    implementation(libs.material)
+//    implementation("com.google.android.material:material:1.12.0") // 請確認版本號
+    // ↓↓↓↓ 加上這三行 ↓↓↓↓
+    // Room 核心函式庫
+    implementation(libs.androidx.room.runtime)
+    //  Dagger 和 Room 沒有任何直接關係
+//    implementation("com.google.dagger:dagger-compiler:2.51.1")
+//    ksp("com.google.dagger:dagger-compiler:2.51.1")
+    // Room 的 Kotlin 擴充，提供協程支援 (必加！)
+    implementation(libs.androidx.room.ktx) // 提供協程 (Coroutines) 支援，必加
+    // Room 的 Compiler (編譯器)，它必須透過 ksp 這個工具來使用
+    ksp(libs.androidx.room.compiler)      // 這是 Room 的程式碼產生器
     // implementation(libs.androidx.constraintlayout)
+    // (可選，但推薦) Room 的測試輔助工具
+    // testImplementation(libs.androidx.room.testing)
+    // ↑↑↑ 上面這行你需要先在 libs.versions.toml 裡定義好別名
 }

@@ -12,7 +12,7 @@ interface Jogging_dao{
     @Query("SELECT * FROM jogging_records_table ORDER BY id DESC")
     // `ORDER BY id DESC` 让最新的纪录显示在最上面
     fun get_all_records(): Flow<List<Jogging_data_class>>
-    // 只須一次獲取
+    // 持續獲取
 
     @Query("SELECT * FROM jogging_records_table WHERE video_source LIKE '%' || :query_string || '%' ORDER BY id DESC")
     fun search_string(query_string: String): Flow<List<Jogging_data_class>>
